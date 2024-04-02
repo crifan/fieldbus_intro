@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    
+    xml:id="appendix">
+<title>关于现场总线的一些思考</title>
+<abstract></abstract>
+
+<qandaset defaultlabel='qanda' >
+    <qandaentry xml:id="qanda.why_fieldbus_realtime">
+        <question><para>为何现场总线都是实时的？</para></question>
+        <answer>
+            <para>由于工业控制等领域中，系统要去控制这些工作模块，往往都需要精准的时间，所以，现场总线也必须是实时的。</para>
+            <para>即在既定的时间内，就必须将控制信息等数据传送到对应的被控设备中，以实现对其控制。</para>
+            <para>如果通过现场总线传输数据的过程中，耗时太长，或者延迟超过特定的限制，那么很可能就会失去对设备的控制，在设备出现异常等情况的时候，也无法及时有效地控制设备做出必要的响应。因此，现场总线，必须是实时的。</para>
+        </answer>
+    </qandaentry>
+
+    <qandaentry xml:id="qanda.why_fieldbus_only_osi_3_layer">
+        <question><para>为何现场总线协议都只包含了OSI模型的1,2,7三层，而没有全部包含？</para></question>
+        <answer>
+            <para>首先，对于此问题的解释，如果是问现场总线所实现出来的协议来说的话，那么，由于对应的协议是由对应的现场总线的规范而决定的，所以，此问题的答案很简单，就是现场总线的规范的定义中，表面上看，就只定义了OSI的1,2,7层，所以对应的实现的现场总线的协议，也因此只包含了OSI的1,2,7层。</para>
+            <para>而如果继续问，为何现场总线规范中，只实现了OSI的1,2,7层，而没有实现所有的层次，那么答案是：</para>
+            <para>OSI的模型中，分了7层，而现场总线虽然表面上看只实现了1,2,7三层，但是实际上：</para>
+            <para>现场总线的2,7层=OSI的2,3,4,5,67层，</para>
+            <para>即功能上，都是已经实现了，只是没有细分出来而已。</para>
+            <para>为何没有细分出来，主要原因还是在于：</para>
+            <para>实际的现场总线的应用环境中，不需要这么多层次。将层次简化了，显得结构更加紧凑，可以使得降低各层次之间的通信的开销，以实现更低的通信延迟，更快的速度，更利于实现现场总线的实时特性。</para>
+            <para>那么再来细看现场总线的这1,2,7三层：</para>
+            <itemizedlist>
+                <listitem>第一层，物理层
+                    <para>关于物理电路特性，比如电压是3.3V还是5V等，这个，肯定是必须的</para>
+                </listitem>
+                <listitem>第二层，数据链路层
+                    <para>关于数据是如何组织的，也是需要说明清楚的</para>
+                </listitem>
+                <listitem>第七层，应用层
+                    <para>表明了具体的应用</para>
+                </listitem>
+            </itemizedlist>
+            <para>此三层，算得上是最精简的了，也很难再简化了。</para>
+        </answer>
+    </qandaentry>
+
+</qandaset>
+
+</chapter>

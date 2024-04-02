@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<glossary
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    
+    xml:id="glossary">
+
+<glossentry id="ASIC"><glossterm>ASIC</glossterm>
+    <acronym>ASIC</acronym>
+    <glossdef>
+      <para>Application Specific Integrated Circuit</para>
+      <para>特定用途的集成电路</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="DCS"><glossterm>DCS</glossterm>
+    <acronym>DCS</acronym>
+    <glossdef>
+      <para>Digital/Distributed Control System</para>
+      <para>数字化或分布式的控制系统</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="EIA"><glossterm>EIA</glossterm>
+    <acronym>EIA</acronym>
+    <glossdef>
+      <para>Electronic Industrial Alliance</para>
+      <para>美国电子工业联合会</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="Ethernet_IP"><glossterm>Ethernet/IP</glossterm>
+    <acronym>Ethernet/IP</acronym>
+    <glossdef>
+      <para>Ethernet Industrial Protocol</para>
+      <para>以太网工业协议</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="FDL"><glossterm>FDL</glossterm>
+    <acronym>FDL</acronym>
+    <glossdef>
+      <para>Fieldbus Data Link</para>
+      <para>现场总线数据链路（层）</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="FF"><glossterm>FF</glossterm>
+    <acronym>FF</acronym>
+    <glossdef>
+      <para>Foundation Fieldbus</para>
+      <para>基金会现场总线</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="FPGA"><glossterm>FPGA</glossterm>
+    <acronym>FPGA</acronym>
+    <glossdef>
+      <para>Filed Programmable Gate Arrays</para>
+      <para>现场可编程门阵列</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="HART"><glossterm>HART</glossterm>
+    <acronym>HART</acronym>
+    <glossdef>
+      <para>Highway Addressable Remote Transducer</para>
+      <para>可寻址远程传感器高速通道协议</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="HMI"><glossterm>HMI</glossterm>
+    <acronym>HMI</acronym>
+    <glossdef>
+      <para>Human Machine Interface</para>
+      <para>人机交互界面</para>
+      <para>可以简单理解为图形界面，方便用户操作对应的系统</para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="IEC"><glossterm>IEC</glossterm>
+    <acronym>IEC</acronym>
+    <glossdef>
+      <para>International Engineering Consortium</para>
+      <para>国际电工委员会</para>
+      <para>IEC负责电工，电子领域的国际标准化工作，于此对应的ISO，负责其他领域的国际标准。</para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="IRT"><glossterm>IRT</glossterm>
+    <acronym>IRT</acronym>
+    <glossdef>
+      <para>Isochronous Real Time</para>
+      <para>等时式实时</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="LAN"><glossterm>LAN</glossterm>
+    <acronym>LAN</acronym>
+    <glossdef>
+      <para>Local Area Network</para>
+      <para>局域网</para>
+      <para>一种计算机网络，实现，在一个有限的范围内，所有的计算机互联</para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="MBP"><glossterm>MBP</glossterm>
+    <acronym>MBP</acronym>
+    <glossdef>
+      <para>Manchester Bus Powered</para>
+      <para>曼彻斯特总线供电</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="PLC"><glossterm>PLC</glossterm>
+    <acronym>PLC</acronym>
+    <glossdef>
+      <para>Programmable Logic Controller</para>
+      <para>可编程逻辑控制器</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="Profibus"><glossterm>Profibus</glossterm>
+    <acronym>Profibus</acronym>
+    <glossdef>
+      <para>PROcess FIeldBUS</para>
+      <para>过程现场总线</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="Profibus_DP"><glossterm>Profibus DP</glossterm>
+    <acronym>Profibus DP</acronym>
+    <glossdef>
+      <para>Profibus Decentralized Peripherals</para>
+      <para>分散性外围设备过程现场总线</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="Profibus_PA"><glossterm>Profibus PA</glossterm>
+    <acronym>Profibus PA</acronym>
+    <glossdef>
+      <para>Profibus Process Automation</para>
+      <para>过程自动化过程现场总线</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+<glossentry id="SD"><glossterm>SD</glossterm>
+    <acronym>SD</acronym>
+    <glossdef>
+      <para>Start Delimiter</para>
+      <para>起始分隔符</para>
+      <para></para>
+    </glossdef>
+</glossentry>
+
+</glossary>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    
+    xml:id="ch02_fieldbus_specs">
+<title>现场总线规范简介</title>
+<abstract></abstract>
+
+<para>现场总线技术1988年左右就出现了，后来经过漫长的时期，才发展为最初的IEC 61158标准，其包含了8个不同的协议集合，此处叫做"类型（type）"：</para>
+<table id="tbl.iec_61158_types"><title>IEC 61158标准的8种类型</title>
+    <tgroup cols="2">
+        <colspec colnum="1" colname="col1" colwidth="1*" />
+        <colspec colnum="2" colname="col2" colwidth="6*" />
+        
+        <thead>
+            <row><entry>类型</entry><entry>名称</entry></row>
+        </thead>
+        
+        <tbody>
+            <row><entry>Type 1</entry><entry>Foundation Fieldbus H1</entry></row>
+            <row><entry>Type 2</entry><entry>ControlNet</entry></row>
+            <row><entry>Type 3</entry><entry>PROFIBUS</entry></row>
+            <row><entry>Type 4</entry><entry>P-Net</entry></row>
+            <row><entry>Type 5</entry><entry>FOUNDATION fieldbus HSE (High Speed Ethernet)</entry></row>
+            <row><entry>Type 6</entry><entry>SwiftNet (a protocol developed for Boeing, since withdrawn)</entry></row>
+            <row><entry>Type 7</entry><entry>WorldFIP</entry></row>
+            <row><entry>Type 8</entry><entry>Interbus</entry></row>
+        </tbody>
+    </tgroup>
+</table>
+<para>此种形式的标准，最初是为欧洲经济共同体（European Common Market）所开发的，主要重点不在通用性，公平性，而在于实现其主要目的，即取消各个贸易国之间的贸易壁垒。</para>
+<para>而关于通用性的问题，则是留给了那些负责支持现场总线标准类型的国际公会联盟。几乎是自从“八国首脑”成立后，此IEC标准开发工作就停止了，委员会也解散了。一个新的IEC委员会 SC65C/MT-9成立了，旨在解决不同形式的标准之间的冲突和维护4000多页的IEC 61158协议标准。</para>
+<para>原先的协议类型基本已完成，而新的协议，例如安全现场总线（safety fieldbus）或者是基于以太网的实时的现场总线，也被吸收接纳进入此国际版的现场总线标准中了。维护此协议的时间，基本算是5年一个周期。</para>
+<para>目前，在过程控制领域，不论是新的开发还是主要的改装，FF （Foundation Fieldbus）和Profibus技术已经得到广泛实现和应用了。</para>
+
+<sect1 xml:id="iec_61158_intro"><title>IEC 61158规范简介</title>
+    <para>现场总线技术，有很多种。因此，没有实现其最原始的期望，即希望用一个通讯机制统一所有的应用。而这点，不是没有预料到，而且是因为现实的实际情况是，不同的应用领域，的确需要不同的规范的实现。比如，汽车制造方面的现场总线，从功能上，就和工厂的生产线的控制，不一样。</para>
+    <para>最终的IEC61158标准，则允许8种实现技术。对于自动化协议，这其中也内含一些层次关系。</para>
+</sect1>
+
+<sect1 xml:id="iec_61158_content"><title>IEC 61158规范的内容</title>
+    <para>IEC 61158规范，标题是 用于测量和控制领域的数字化数据通讯-现场总线，用于工业控制系统，其包含了以下部分：</para>
+    <table id="tbl.iec_61158_protocol_parts"><title>ICE 61158协议组成</title>
+        <tgroup cols="2">
+            <colspec colnum="1" colname="col1" colwidth="1*" />
+            <colspec colnum="2" colname="col2" colwidth="6*" />
+            
+            <thead>
+                <row><entry>组成部分</entry><entry>协议内容</entry></row>
+            </thead>
+            
+            <tbody>
+                <row><entry>Part 1</entry><entry>IEC 61158系列协议的概述和一些指导意见</entry></row>
+                <row><entry>Part 2</entry><entry>物理层的规范和服务的定义</entry></row>
+                <row><entry>Part 3</entry><entry>数据链路层的服务定义</entry></row>
+                <row><entry>Part 4</entry><entry>数据链路层的协议规范</entry></row>
+                <row><entry>Part 5</entry><entry>应用层的服务定义</entry></row>
+                <row><entry>Part 6</entry><entry>应用层的协议规范</entry></row>
+            </tbody>
+        </tgroup>
+    </table>
+</sect1>
+
+<sect1 xml:id="iec_61158_implementation"><title>IEC 61158规范的众多的实现标准</title>
+    <para>现场总线标准的实现，有很多种，而不同的协议有不同的特性和性能。</para>
+    <para>而由于其之间，数据传输方法的极大差异，使得也没有一个通用的比较模式去比较它们之间的性能区别。</para>
+    <para>下表，以对应的现场总线通常是否支持1ms或更快的数据更新周期为例，进行了简单的比较：</para>
+    <table id="tbl.fieldbus_compares"><title>现场总线部分特性和性能对比</title>
+        <tgroup cols="6">
+            <colspec colnum="1" colname="col1" colwidth="2*" />
+            <colspec colnum="2" colname="col2" colwidth="1*" />
+            <colspec colnum="3" colname="col3" colwidth="1*" />
+            <colspec colnum="4" colname="col4" colwidth="1*" />
+            <colspec colnum="5" colname="col5" colwidth="1.4*" />
+            <colspec colnum="6" colname="col6" colwidth="1*" />
+            
+            <thead>
+                <row><entry>Fieldbus</entry><entry>Bus power</entry><entry>Cabling redundancy</entry><entry>Max devices</entry><entry>Synchronisation</entry><entry>Sub millisecond cycle</entry></row>
+            </thead>
+            
+            <tbody>
+                <row><entry>AS-Interface</entry><entry>Yes</entry><entry>No</entry><entry>62</entry><entry>No</entry><entry>No</entry></row>
+                <row><entry>CANOpen</entry><entry>No</entry><entry>No</entry><entry>127</entry><entry>Yes</entry><entry>No</entry></row>
+                <row><entry>CompoNet</entry><entry>Yes</entry><entry>No</entry><entry>384</entry><entry>No</entry><entry>Yes</entry></row>
+                <row><entry>ControlNet</entry><entry>No</entry><entry>Yes</entry><entry>99</entry><entry>No</entry><entry>No</entry></row>
+                <row><entry>CC-Link</entry><entry>No</entry><entry>No</entry><entry>64</entry><entry>No</entry><entry>No</entry></row>
+                <row><entry>DeviceNet</entry><entry>Yes</entry><entry>No</entry><entry>64</entry><entry>No</entry><entry>No</entry></row>
+                <row><entry>EtherCAT</entry><entry>No</entry><entry>Yes</entry><entry>65536</entry><entry>Yes</entry><entry>Yes</entry></row>
+                <row><entry>Ethernet Powerlink</entry><entry>No</entry><entry>Optional</entry><entry>240</entry><entry>Yes</entry><entry>Yes</entry></row>
+                <row><entry>EtherNet/IP</entry><entry>No</entry><entry>Optional</entry><entry>Almost unlimited</entry><entry>Under development</entry><entry>No</entry></row>
+                <row><entry>Interbus</entry><entry>No</entry><entry>No</entry><entry>511</entry><entry>No</entry><entry>No</entry></row>
+                <row><entry>LonWorks</entry><entry>No</entry><entry>No</entry><entry>32000</entry><entry>No</entry><entry>No</entry></row>
+                <row><entry>Modbus</entry><entry>No</entry><entry>No</entry><entry>246</entry><entry>No</entry><entry>No</entry></row>
+                <row><entry>PROFIBUS DP</entry><entry>No</entry><entry>Optional</entry><entry>126</entry><entry>Yes</entry><entry>No</entry></row>
+                <row><entry>PROFIBUS PA</entry><entry>Yes</entry><entry>No</entry><entry>126</entry><entry>No</entry><entry>No</entry></row>
+                <row><entry>PROFINET IO</entry><entry>No</entry><entry>Optional</entry><entry>Almost unlimited</entry><entry>No</entry><entry>No</entry></row>
+                <row><entry>PROFINET IRT</entry><entry>No</entry><entry>Optional</entry><entry>Almost unlimited</entry><entry>Yes</entry><entry>Yes</entry></row>
+                <row><entry>SERCOS III</entry><entry>No</entry><entry>Yes</entry><entry>511</entry><entry>Yes</entry><entry>Yes</entry></row>
+                <row><entry>SERCOS interface</entry><entry>No</entry><entry>No</entry><entry>254</entry><entry>Yes</entry><entry>Yes</entry></row>
+                <row><entry>Foundation_Fieldbus_H1</entry><entry>Yes</entry><entry>No</entry><entry>240</entry><entry>No</entry><entry>No</entry></row>
+            </tbody>
+        </tgroup>
+    </table>
+</sect1>
+
+</chapter>

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    
+    xml:id="ch03_fieldbus_features">
+<title>现场总线的一些特性</title>
+<abstract></abstract>
+
+<sect1 xml:id="fieldbus_pros"><title>现场总线的优点</title>
+    <para>和"4-20 mA通讯方案"相比，现场总线只需少得多的电缆即可实现互联。</para>
+    <para>因此，许多设备，可以通过一拖多的方式，共享同一组的电缆，而4-20mA的连接，对每一个设备，都需要一组特定的电缆。</para>
+    <para>而且，现场总线网络，在单次通信中可以传送多个参数，而4-20mA的连接，一次只能传送一个参数。</para>
+</sect1>
+
+<sect1 xml:id="fieldbus_cons"><title>现场总线的缺点</title>
+    <para>与4-20mA的模拟信号标准的方案相比，现场总线也有一些缺点：</para>
+    <orderedlist>
+        <listitem>现场总线显得更加复杂，所以需要用户有足够的知识和受到专业的培训后，方能应用。</listitem>
+        <listitem>现场总线的组件，价格更高些</listitem>
+        <listitem>和4-20mA中用来读取或模拟信号的万用表相比，现场总线的测试设备，也更复杂。</listitem>
+        <listitem>不同的现场总线的系统，反馈信号所需时间也不同，不过相比4-20mA要稍微长一些。</listitem>
+        <listitem>设备制造商必须为不同的现场总线标准，为同一设备，提供多个不同版本。这会增加设备成本设备选择方面的难度。</listitem>
+        <listitem>在众多的现场总线标准中，其中很少的一些，会随着时间发展，逐渐占领大部分的市场，而其他一些，则会逐渐地淘汰。这对于投资去实现现场总线，也是一个要考虑的风险。</listitem>
+    </orderedlist>
+</sect1>
+
+<sect1 xml:id="fieldbus_safety"><title>现场总线的安全性</title>
+    <para>对于一些必须满足一些安全性标准，如IEC 61508或EN 954-1，的系统来说，现场总线，也是适用的。</para>
+    <para>取决于实际所用的不同的协议，现场总线，也可以支持一些评测特性，比如计数器，CRC校验，回显，超时，发送者或接受者的ID的唯一性，交叉校验。</para>
+    <para>Ethernet/IP和SERCOS III，都使用CIP安全协议，Ethernet Powerlink使用openSAFETY，而FF和Profibus，都有各自的一些兼容安全协议的变体。</para>
+</sect1>
+
+<sect1 xml:id="fieldbus_feature"><title>现场总线的市场和前景</title>
+    <para>目前，现场总线协议，在过程控制系统中，用的最多的是FF和PROFIBUS PA。</para>
+    <para>两种技术都使用相同的物理层，即双线的31.25KHz的曼彻施特编码的电流调制，</para>
+    <para>关于选择哪类现场总线，概括地说就是：</para>
+    <itemizedlist>
+        <listitem>通过PLC来控制和监视方面的应用，倾向于用Profibus</listitem>
+        <listitem>通过数字化或分布式的控制系统DCS来监视和控制的应用，倾向于用FF</listitem>
+    </itemizedlist>
+    <para>近来，出现了一些基于以太网的工业通讯系统，其中多数都是属于原系统在在实时通讯方面的扩展，从长远看，这些系统会逐渐取代现有的现场总线技术的。</para>
+    <para>如下列举了一部分这类新的，基于以太网的工业通讯系统：</para>
+    <itemizedlist>
+        <listitem>EtherCAT</listitem>
+        <listitem>EtherNet/IP</listitem>
+        <listitem>Ethernet Powerlink</listitem>
+        <listitem>PROFINET IO</listitem>
+        <listitem>PROFINET IRT</listitem>
+        <listitem>SafetyNET p</listitem>
+        <listitem>SERCOS III</listitem>
+        <listitem>TTEthernet</listitem>
+        <listitem>VARAN</listitem>
+    </itemizedlist>
+</sect1>
+
+</chapter>

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<bibliography
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    
+    xml:id="reference">
+
+<bibliomixed id="ref.wiki_fieldbus">
+  <bibliosource><link xl:href="http://en.wikipedia.org/wiki/Fieldbus">Fieldbus</link></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+<bibliomixed id="ref.wiki_profibus">
+  <bibliosource><link xl:href="http://en.wikipedia.org/wiki/Profibus">Profibus</link></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+<bibliomixed id="ref.wiki_profinet">
+  <bibliosource><link xl:href="http://en.wikipedia.org/wiki/PROFINET">Profinet</link></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+<bibliomixed id="ref.wiki_lan">
+  <bibliosource><link xl:href="http://en.wikipedia.org/wiki/Local_area_network">Local area network</link></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+<bibliomixed id="ref.sercos_iii">
+  <bibliosource><link xl:href="http://en.wikipedia.org/wiki/SERCOS_III">SERCOS III</link></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+<bibliomixed id="ref.fieldbus_comm_feature">
+  <bibliosource><link xl:href="http://bbs.cechina.cn/thread-141333.html">现场总线通信模型的特点</link></bibliosource>
+  <author>yalihuang</author>
+</bibliomixed>
+
+<bibliomixed id="ref.why_most_only_127_layer">
+  <bibliosource><link xl:href="http://zhidao.baidu.com/question/244236780.html">为什么大多数现场总线协议只包含OSI的1 ,2,7层</link></bibliosource>
+  <author>金伟伟1</author>
+</bibliomixed>
+
+<bibliomixed id="ref.wiki_eia485">
+  <bibliosource><link xl:href="http://en.wikipedia.org/wiki/EIA-485">EIA-485</link></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+<bibliomixed id="ref.org_iec">
+  <bibliosource><link xl:href="http://www.ccsa.org.cn/organization/intro.php?org=IEC">国际电工委员会</link></bibliosource>
+  <author>ccsa</author>
+</bibliomixed>
+
+<bibliomixed id="ref.ethernet_ip">
+  <bibliosource><link xl:href="http://www.anybus.cn/technologies/ethernet_ip.shtml">Ethernet/IP)</link></bibliosource>
+  <author>anybus</author>
+</bibliomixed>
+
+<bibliomixed id="ref.wiki_ethernet_ip">
+  <bibliosource><link xl:href="http://en.wikipedia.org/wiki/EtherNet/IP">Ethernet/IP</link></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+<bibliomixed id="ref.wiki_hart">
+  <bibliosource><link xl:href="http://en.wikipedia.org/wiki/Highway_Addressable_Remote_Transducer_Protocol">Highway Addressable Remote Transducer Protocol</link></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+<bibliomixed id="ref.foundation_fieldbus">
+  <bibliosource><link xl:href="http://en.wikipedia.org/wiki/FOUNDATION_fieldbus">FOUNDATION fieldbus</link></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+<bibliomixed id="ref.ff_overview">
+  <bibliosource><link xl:href="http://www.ni.com/pdf/manuals/370729a.pdf">Foundation Fieldbus Overview</link></bibliosource>
+  <author>National Instruments</author>
+</bibliomixed>
+
+<bibliomixed id="ref.profinet_siemens_sinumberik_828d_mcp_pn_pp_72_48d">
+  <bibliosource><link xl:href="http://www.crifan.com/profinet_siemens_sinumberik_828d_system_arch_and_mcp_483c_pn/">【整理】PROFINET应用实例：SIEMENS的SINUMERIK 828D系统框架示例连接图：SINUMERIK 828D+MCP 483C PN+PP 72/48D PN+其他</link></bibliosource>
+  <author>Crifan Li</author>
+</bibliomixed>
+
+</bibliography>

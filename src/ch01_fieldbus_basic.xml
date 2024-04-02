@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    
+    xml:id="ch01_fieldbus_basic">
+<title>现场总线的基础知识</title>
+<abstract></abstract>
+
+<sect1 xml:id="what_is_fieldbus"><title>什么是现场总线</title>
+    <para>现场总线，是一组工业计算机协议的总称。这些协议是用于实时的分布式控制方面的。</para>
+    <para>现在标准化为 IEC 61158</para>
+</sect1>
+
+<sect1 xml:id="why_need_fieldbus"><title>为什么需要现场总线</title>
+    <para>对于一个复杂的工业自动化控制系统，比如制造生产线，常常需要一个有良好的系统架构，才能更好地实现，控制系统去控制对应的功能模块。</para>
+    <para>而这套控制系统架构，一般包含了上层的人机交互界面HMI，以便操作者监视和操作系统，此一层，往往又通过一个对时间不是很敏感的（non-time-critical）通讯系统，比如Ethernet，与下面的PLC的中间层相连接。在控制系统的最底层，就是对应的现场总线，将PLC连接到对应的实际工作的功能组件上，比如传感器（sensor），制动器（actuator），电动机（electric motor），灯光控制（console light），开关（switch），阀门（valve），接触器（contactor）。</para>
+    <para>所以，需要现场总线，将控制系统的上层HMI+中间层PLC，连接到实际工作的模块，以实现对应的控制功能。</para>
+    <para>下表简要概括了，常见的工业自动化控制系统中，各个层次之间的关系：</para>
+    <table id="tbl.auto_ctrl_sys_arch"><title>工业自动化控制系统的架构组成</title>
+        <tgroup cols="3">
+            <colspec colnum="1" colname="col1" colwidth="1*" />
+            <colspec colnum="2" colname="col2" colwidth="2*" />
+            <colspec colnum="3" colname="col3" colwidth="2*" />
+            
+            <thead>
+                <row><entry>层次</entry><entry>包含的内容</entry><entry>解释</entry></row>
+            </thead>
+            
+            <tbody>
+                <row><entry>&bgcolor_lightgray;上层</entry><entry>&bgcolor_lightgray;HMI人机交互界面</entry><entry>&bgcolor_lightgray;用户操作和控制的界面</entry></row>
+                <row>&bgcolor_palegreen;<entry namest="col1" nameend="col3" align="center" >通讯系统（比如Ethernet等）</entry></row>
+                <row><entry>&bgcolor_lightgray;中间层</entry><entry>&bgcolor_lightgray;PLC或者控制器</entry><entry>&bgcolor_lightgray;</entry></row>
+                <row><entry namest="col1" nameend="col3" align="center" >&bgcolor_palegreen;现场总线（比如Ethernet/IP,FF，Profibus等）</entry></row>
+                <row><entry>&bgcolor_lightgray;底层</entry><entry>&bgcolor_lightgray;被控制的功能模块</entry><entry>&bgcolor_lightgray;比如传感器，电动机等</entry></row>
+            </tbody>
+        </tgroup>
+    </table>
+</sect1>
+
+<sect1 xml:id="fieldbus_connect_type"><title>现场总线的连接方式</title>
+    <para>最开始，两个计算机之间，都是以RS232连接的。但是缺点是只能在2个设备之间连接通信。</para>
+    <para>此连接方式等价于现在所用的"4-20 mA通讯方案"（4-20 mA communication scheme），其要求，每一个设备在控制器层面上，都有其自己的通讯端口，而现场总线等价于当前的LAN类型的网络连接。其只要求在控制器的级别上，有一个通讯端口，然后允许同时连接成百上千的模拟的和数字的模块。此方案，即降低了对电缆长度的要求，又减少了对电缆数目的需求。</para>
+    <para>再者，由于设备通过现场总线连接的话，需要一个微处理器，所以同一个设备可以提供多个端点。有些现场总线现在支持一种PID控制方案，在设备端实现控制功能，而不需要控制器端去处理。</para>
+</sect1>
+
+<sect1 xml:id="fieldbus_topology"><title>现场总线的网络拓扑</title>
+    <para>即现场总线中，各个组件之间，是什么样的连接方式，有这些网络拓扑形式：</para>
+    <itemizedlist>
+        <listitem>菊花链（daisy chain）</listitem>
+        <listitem>星形（star）</listitem>
+        <listitem>环形（ring）</listitem>
+        <listitem>分支型（branch）</listitem>
+        <listitem>树形（tree）</listitem>
+    </itemizedlist>
+</sect1>
+
+</chapter>

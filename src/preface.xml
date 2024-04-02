@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE preface>
+
+<preface
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    
+    xml:id="preface">
+<title>正文之前</title>
+
+<section xml:id="purpose"><title>此文目的</title>
+    <para>此文主要是简述现场总线的一些基本知识，包括现场总线的历史，为何需要现场总线，以及对应的IEC 61158规范的相关知识和对应此规范的实现协议有哪些。</para>
+</section>
+
+</preface>

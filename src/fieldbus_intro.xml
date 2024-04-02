@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE book
+[
+
+<!ENTITY cur_book_name      "fieldbus_intro" >
+<!ENTITY publish_date       "2015-05-26" >
+<!ENTITY release_version    "1.2.0" >
+
+<!ENTITY copyrith_year "2015" >
+<!ENTITY entity_common_multi_format     SYSTEM  "../../entity_common_multi_format.xml">
+<!ENTITY entity_common_publish_info     SYSTEM  "../../entity_common_publish_info.xml">
+]>
+
+<book version="5.0"
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xml:lang="zh_CN"
+    >
+
+<info>
+    <title>现场总线Fieldbus简析</title>
+    <subtitle></subtitle>
+    <keywordset>
+        <keyword>Fieldbus</keyword>
+        <keyword>现场总线</keyword>
+        <keyword>IEC 61158</keyword>
+        <keyword>FF</keyword>
+        <keyword>ProfiBus</keyword>
+    </keywordset>
+
+    <abstract>
+        <para>此文主要介绍的现场总线的基础知识,以及现场总线的规范的简介和现场总线的一些特性,并且对简单介绍了常见的现场总线的基本架构和相关知识点,包括Profibus,Profinet,Ethernet/IP,HART,Foundation Fieldbus,还包括一些常见问题的思考</para>
+        &entity_common_multi_format;
+    </abstract>
+
+    <revhistory>
+        <revision>
+            <revnumber>1.0</revnumber>
+            <date>2011-10-03</date>
+            <revremark>
+                <orderedlist>
+                    <listitem>简述现场总线的基本知识</listitem>
+                    <listitem>对于常见的一些现场总线技术进行了简单介绍</listitem>
+                </orderedlist>
+            </revremark>
+            <authorinitials>crl</authorinitials>
+        </revision>
+        <revision>
+            <revnumber>&release_version;</revnumber>
+            <date>&publish_date;</date>
+            <revremark>
+                <orderedlist>
+                    <listitem>通过Docbook发布</listitem>
+                    <listitem>添加部分profinet内容</listitem>
+                </orderedlist>
+            </revremark>
+            <authorinitials>crl</authorinitials>
+        </revision>
+    </revhistory>
+
+    &entity_common_publish_info;
+</info>
+
+<xi:include href="glossary.xml"/>
+<xi:include href="preface.xml"/>
+<xi:include href="ch01_fieldbus_basic.xml"/>
+<xi:include href="ch02_fieldbus_specs.xml"/>
+<xi:include href="ch03_fieldbus_features.xml"/>
+<xi:include href="ch04_fieldbus_common.xml"/>
+<xi:include href="appendix.xml"/>
+<xi:include href="reference.xml"/>
+
+</book>

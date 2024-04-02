@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    
+    xml:id="ch04_fieldbus_common">
+<title>一些常见的现场总线的简介</title>
+<abstract></abstract>
+
+<sect1 xml:id="fieldbus_profibus"><title>PROFIBUS</title>
+    <sect2 xml:id="profibus_background"><title>背景和现状</title>
+        <para>1987年，德国，21个公司和组织，发起了一个项目计划，叫做“现场总线”，并成立了一个协会，目的是，实现和传播，基于现场设备接口的基本需求，而产生的“串行位”的现场总线的应用。为了实现这一目的，成员国达成一致，愿意支持一种通用的技术概念，用于生产和过程自动化。</para>
+        <para>最初，制定出的第一个规范是Profibus FMS（现场总线消息规范，Field Bus Message Specification），其经过裁剪用于要求较高的任务间通讯。在接下来的1993年，又制定出了更加简单，速度也更快的协议，Profibus DP（分散性外围设备）协议。</para>
+        <para>Profibus FMS用于Profibus主控(Master)之间的非确定性的数据通信；</para>
+        <para>Profibus DP用于Profibus主控和其远程的从设备的IO之间的确定性的数据通信。</para>
+        <para>目前Profibus主要有两类，用的最多的是Profibus DP，其次是，和应用相关的Profibus PA。</para>
+        
+        <sect3 xml:id="profibus_dp"><title>Profibus DP</title>
+            <para>在生产自动化应用中，通过一个中央化的控制器，用此Profibus DP，去操作传感器和制动器。</para>
+            <para>许多标准的诊断方法，也主要是针对这方面的应用。</para>
+        </sect3>
+        
+        <sect3 xml:id="profibus_pa"><title>Profibus PA</title>
+            <para>在过程自动化应用中，用Profibus PA，通过过程控制系统，去监测设备。此技术主要是用于爆炸性的和对人体有害（Ex-zone 0 and 1）的环境中。</para>
+            <para>物理层，比如电缆，符合IEC 61158-2的规范，其支持现场的设备通过总线供电的同时由于电流很小，所以即使出现故障，也不会产生爆炸。也因此，总线上连接的设备的数目是比较有限的。</para>
+            <para>PA的数据传输速率有31.25Kbit/s，但是PA却是和DP用同一种协议，可以通过一个耦合器与DP进行连接。而速度相对较快的DP，则是起到一个主干网的作用，将过程信号数据传输到控制器端。这就意味着，DP和PA可以紧密地协同地工作，尤其是在那些过程和共产自动化，都是各自为政的混合型的应用中。</para>
+        </sect3>
+    </sect2>
+        
+    <sect2 xml:id="profibus_arch"><title>Profibus架构简介</title>
+        <para>下表为以OSI为参考模型的Profibus的协议架构：</para>
+        <table id="tbl.profibus_base_on_osi" align="center" ><title>以OSI为参考模型的PROFIBUS协议架构</title>
+            <tgroup cols="6">
+                <colspec colnum="1" colname="col1" colwidth="0.5*" />
+                <colspec colnum="2" colname="col2" colwidth="1*" />
+                <colspec colnum="3" colname="col3" colwidth="1*" />
+                <colspec colnum="4" colname="col4" colwidth="1*" />
+                <colspec colnum="5" colname="col5" colwidth="1*" />
+                <colspec colnum="6" colname="col6" colwidth="2*" />
+                
+                <thead>
+                    <row><entry namest="col1" nameend="col2" align="center" >OSI-Layer</entry><entry namest="col3" nameend="col5" align="center" >PROFIBUS</entry><entry></entry></row>
+                </thead>
+                
+                <tbody>
+                    <row><entry>&bgcolor_yellow;7</entry><entry>&bgcolor_yellow;Application</entry><entry>&bgcolor_orange;DPV0</entry><entry>&bgcolor_orange;DPV1</entry><entry>&bgcolor_orange;DPV2</entry><entry morerows="6" valign="middle" >&bgcolor_gray;Management</entry></row>
+                    <row><entry>&bgcolor_yellow;6</entry><entry>&bgcolor_yellow;Presentation</entry><entry morerows="3" valign="middle" namest="col3" nameend="col5" align="center" >&bgcolor_ivory;---</entry></row>
+                    <row><entry>&bgcolor_yellow;5</entry><entry>&bgcolor_yellow;Session</entry></row>
+                    <row><entry>&bgcolor_yellow;4</entry><entry>&bgcolor_yellow;Transport</entry></row>
+                    <row><entry>&bgcolor_yellow;3</entry><entry>&bgcolor_yellow;Network</entry></row>
+                    <row><entry>&bgcolor_yellow;2</entry><entry>&bgcolor_yellow;Data Link</entry><entry namest="col3" nameend="col5" align="center" >&bgcolor_orange;FDL</entry></row>
+                    <row><entry>&bgcolor_yellow;1</entry><entry>&bgcolor_yellow;Physical</entry><entry>&bgcolor_orange;EIA-485</entry><entry>&bgcolor_orange;Optical</entry><entry>&bgcolor_orange;MBP</entry></row>
+                </tbody>
+            </tgroup>
+        </table>
+        
+        <sect3 xml:id="profibus_app_layer"><title>应用层</title>
+            <para>为了实现对应的功能，定义出了DP协议中的各种服务：</para>
+            <orderedlist>
+                <listitem>DP-V0
+                    <para>用于周期性的数据交换和设备诊断</para>
+                </listitem>
+                <listitem>DP-V1
+                    <para>用于周期和非周期的数据交换和警报处理</para>
+                </listitem>
+                <listitem>DP-V2
+                    <para>用于等时模式和数据交换广播（从设备到从设备的通讯）</para>
+                </listitem>
+            </orderedlist>
+        </sect3>
+        
+        <sect3 xml:id="profibus_link_layer"><title>数据链路层=安全层</title>
+            <para>此处的FDL（Fieldbus Data Link）层也叫做安全层，其将令牌环传递模式和主从模式合并而成为混合访问模式。在Profibus DP的网络中，控制器或者是过程控制系统，是主设备端，传感器和制动器等，是从设备端。</para>
+            <para>其是用各种不同类型的报文，每种报文有各自不同的起始分隔符（SD，start delimiter）。</para>
+        </sect3>
+        
+        <sect3 xml:id="profibus_phy_layer"><title>物理层=比特位传输层</title>
+            <para>比特位传输（Bit-transmission）层，包含了三种方式：</para>
+            <orderedlist>
+                <listitem>EIA-485
+                    <para>即RS-485，根据EIA-485的电信号传输标准，在总线拓扑中使用电阻是150欧姆的双绞线。可用的比特率是从9.6kbit/s到12Mbit/s。两个中继器之间的电缆长度限制是在100米到1200米，具体长度取决于比特率。传输方法主要是用Profibus DP。</para>
+                </listitem>
+                <listitem>光纤
+                    <para>如果是通过光线传输，那么拓扑结构可选用为星形，总线型，环形。中继器之间的长度最大可达15km。环形拓扑可以冗余式地对应延长</para>
+                </listitem>
+                <listitem>MBP
+                    <para>根据MBP（Manchester Bus Powered）传输技术，可用同一电缆实现供电和数据传输。由于极大地降低了供电，使得可以应用在易爆炸和对人体有害的场合中。总线拓扑结构，可以长达1900米，以及最长分支可达60米。此处比特率是固定的31.25kbit/s，此拓扑结构是专为Profibus PA用于过程自动化领域而设计的</para>
+                </listitem>
+            </orderedlist>
+        </sect3>
+    </sect2>
+</sect1>
+
+<sect1 xml:id="fieldbus_profinet"><title>PROFINET</title>
+    <para>TODO：对于：</para>
+    <para><link xl:href="http://www.crifan.com/industrial_automation_cnc_meaning_and_siemens_sinumberik_828d/">【整理】SIEMENS SINUMERIK 828D简介和CNC的含义</link>中关于SINUMERIK 828D的，和</para>
+    <para><link xl:href="http://www.industry.siemens.com/topics/global/en/magazines/special-editions/Documents/MotionWorld-2012-IMTS-en.pdf" /></para>
+    <para><link xl:href="http://www.industry.siemens.com/topics/global/en/cnc4you/cnc_downloads/cnc4you-magazine/Documents/cnc4you_2012_1_en.pdf" /></para>
+    <para><link xl:href="http://v.youku.com/v_show/id_XMjE2MDc1Mjgw.html">视频: 西门子 Siemens SINUMERIK 828D</link></para>
+    <para><link xl:href="http://www.youtube.com/watch?v=it4pa1wLdR4">Tutorial Programming Sinumerik 828D and 840D sl with ShopTurn</link></para>
+    <para>中的截图，应用案例，整理出来。</para>
+    <para></para>
+    <para>TODO：去看</para>
+    <para><link xl:href="http://www.youtube.com/watch?v=1vUOmYjonYw">SINUMERIK 828D BASIC CNC Control</link></para>
+    <para><link xl:href="http://www.youtube.com/watch?v=82ng1BqvSCk">SINUMERIK 828D Simple Setups</link></para>
+    <para>可以对于CNC数控机床有个更直观的了解：了解CNC如何控制机械去操作设备的</para>
+    <para></para>
+    <para>TODO：</para>
+    <para>有空再去研究：</para>
+    <para><link xl:href="http://www.google.com.hk/search?newwindow=1&amp;safe=strict&amp;client=firefox-a&amp;rls=org.mozilla:zh-CN:official&amp;q=SINUMERIK+828D+rear&amp;um=1&amp;ie=UTF-8&amp;hl=zh-CN&amp;tbm=isch&amp;source=og&amp;sa=N&amp;tab=wi#facrc=_&amp;imgdii=_&amp;imgrc=VvjhL1sAcF6diM%3A%3B6o_TljN_dgN9ZM%3Bhttp%253A%252F%252Fbernardandcompany.files.wordpress.com%252F2013%252F02%252F01_biglia.jpeg%253Fw%253D614%3Bhttp%253A%252F%252Fbernardandcompany.wordpress.com%252Fcategory%252Fsiemens-machine-tools%252Fpage%252F2%252F%3B614%3B350">SINUMERIK 828D rear</link></para>
+    <para>中的很多应用案例。</para>
+    <para>下面是一些相关的产品图片供参考，以便了解对应的该领域内的设备大概长啥样：</para>
+    <figure id="fg.profinet_cnc_device_challenger_microcut"><title>Profinet的CNC设备：Challenger的Microcut</title>
+        <mediaobject>
+            <imageobject role="html"><imagedata fileref="images/profinet_cnc_device_challenger_microcut.jpg" align="left"   scalefit="0" width="100%" /></imageobject>
+            <imageobject role="fo">  <imagedata fileref="images/profinet_cnc_device_challenger_microcut.jpg" align="center" scalefit="1" width="100%" /></imageobject>
+        </mediaobject>
+    </figure>
+    <figure id="fg.profinet_cnc_device_biglia_b465y2"><title>Profinet的CNC设备：Biglia B465Y2</title>
+        <mediaobject>
+            <imageobject role="html"><imagedata fileref="images/profinet_cnc_device_biglia_b465y2.jpg" align="left"   scalefit="0" width="100%" /></imageobject>
+            <imageobject role="fo">  <imagedata fileref="images/profinet_cnc_device_biglia_b465y2.jpg" align="center" scalefit="1" width="100%" /></imageobject>
+        </mediaobject>
+    </figure>
+    <figure id="fg.profinet_cnc_device_millmatic_iii"><title>Profinet的CNC设备：MillMatic III</title>
+        <mediaobject>
+            <imageobject role="html"><imagedata fileref="images/profinet_cnc_device_millmatic_iii.jpg" align="left"   scalefit="0" width="100%" /></imageobject>
+            <imageobject role="fo">  <imagedata fileref="images/profinet_cnc_device_millmatic_iii.jpg" align="center" scalefit="1" width="100%" /></imageobject>
+        </mediaobject>
+    </figure>
+    <para></para>
+    <para></para>
+    <para>Profinet是一个开放式的，Profibus &amp; PI在自动化领域的工业以太网方面的标准。</para>
+    <para>Profinet使用TCP/IP和IT协议标准，是一个实时的以太网。</para>
+    <para>Profinet特点在于是一个模块化的架构，因此，用户可以自定义地去选择每一层所用何功能。</para>
+    <para>与Profinet一起的还有另外两个，Profinet CBA和Profinet IO。</para>
+    <para>Profinet CBA适用于通过TCP/IP的基于组件之间的通讯，和在模块化的系统中的，实时的通讯。此两种通讯，都可以并行使用。</para>
+    <para>Profinet IO是为分散的外设之间的实时RT和等时实时IRT的通讯，而设计的。</para>
+    <para>指定的RT和IRT，仅仅描述了Profinet IO中通讯的实时的特性而已。</para>
+    <para>在同一总线系统中，同一时刻，可以允许Profinet CBA和Profinet IO同时通讯。他们可以分别或合并起来操作，这样的话，从系统层次看的话，Profinet IO子系统就像是一个Profinet CBA系统。</para>
+    <para>为了实现这些功能，定义了三种层次的协议：</para>
+    <orderedlist>
+        <listitem>TCP/IP协议
+            <para>用于Profinet CBA和工厂的试运行，反馈时间在100ms级别</para>
+        </listitem>
+        <listitem>RT实时协议
+            <para>用于Profinet CBA和Profinet IO应用，时间周期是10ms级别</para>
+        </listitem>
+        <listitem>IRT等时式实时协议
+            <para>用于Profinet IO应用的驱动系统中，时间周期在1ms级别</para>
+        </listitem>
+    </orderedlist>
+    
+    <sect2 xml:id="profinet_cba"><title>Profinet CBA = components</title>
+        <para>一个Profinet CBA系统，包含了众多的自动化组件。每个组件都涵盖了机械，电子，和IT方面的参数。组件可以通过标准编程工具生成出来。组件是用XML格式的PCD（Profinet Component Description）文件来描述的。</para>
+        <para>使用配置工具，就可以从这些描述文件中载入对应的配置，并启用这些组件之间的逻辑的内部连接，以实现一个工厂。</para>
+        <para>此模型主要是受到了IEC 61499规范的启发而得。</para>
+    </sect2>
+    
+    <sect2 xml:id="profinet_io"><title>Profinet IO = peripherals</title>
+        <para>通过Profinet IO来实现外设之间的交互。Profinet IO定义了现场连接的设备之间的通讯。</para>
+        <para>其基本思想是层级式的实时概念。Profinet IO定义了在主控制器与从设备之间的整个的数据交换，以及参数设置和如何调试诊断。</para>
+        <para>Profinet IO遵循供给者-消费者的模型，设计是用于基于以太网的现场设备之间的快速的数据交换。</para>
+        <para>Profinet IO包括了如下设备：</para>
+        <orderedlist>
+            <listitem>IO控制器
+                <para>其控制自动化任务的实现</para>
+            </listitem>
+            <listitem>IO设备
+                <para>现场设备，受IO控制器的监视和控制。单个的IO设备可能会包含多个模块或子模块</para>
+            </listitem>
+            <listitem>IO监控者
+                <para>软件实现，常为基于PC端的软件，用于设置参数和调试单个的IO设备</para>
+            </listitem>
+        </orderedlist>
+        <para>在IO控制器和IO设备之间，会建立起一个应用关系（AR，Application Relation），这类AR是用于在参数传输，周期性的数据交换，警报处理等不同的特性之间，去定义对应的通讯关系（CR，Communication Relation）。</para>
+        <para>IO设备的特性，是通过设备制造商的通用配置描述符（GSD，General Station Description）来描述的。用于此描述的语言是一个基于XML的GSDML（GSD标记语言）。GSD文件提供监视软件，作为去规划配置一个Profinet IO的系统提供一个基础。</para>
+    </sect2>
+
+    <sect2 xml:id="profinet_items"><title>Profinet领域内的一些名词术语</title>
+        <itemizedlist>
+            <listitem>PC/PG或PG/PC
+                <para>可以在：</para>
+                <para><link xl:href="http://www.automation.siemens.com/doconweb/pdf/SINUMERIK_SINAMICS_04_2010_E/828D_SH.pdf" /></para>
+                <para>中看到PG/PC，含义是：Programming Device/Personal Computer</para>
+                <para></para>
+            </listitem>
+            <listitem>PPU==Panel Processing Unit=面板处理单元
+                <para><link xl:href="http://www.crifan.com/profinet_siemens_sinumberik_828d_system_arch_and_mcp_483c_pn/">【整理】PROFINET应用实例：SIEMENS的SINUMERIK 828D系统框架示例连接图：SINUMERIK 828D+MCP 483C PN+PP 72/48D PN+其他</link></para>
+                <para>中已有整理：</para>
+                <para>PPU==Panel Processing Unit=面板处理单元</para>
+                <para></para>
+            </listitem>
+        </itemizedlist>
+        <para></para>
+        <para></para>
+        <para></para>
+    </sect2>
+</sect1>
+
+<sect1 xml:id="fieldbus_ethernet_ip"><title>Ethernet/IP</title>
+    <para>Ethernet/IP，以太网工业协议，主要用于过程控制和工业自动化应用领域。</para>
+    <para>Ethernet/IP是一个应用层的标准，其将网络中的所有设备都视为一系列的对象object。</para>
+    <para>Ethernet/IP是基于广泛使用的CPI协议的，其可以无缝地实现去访问来自ControlNet和DeviceNet的对象。</para>
+    <para>Ethernet/IP利用现有的网络架构，即Ethernet网络。</para>
+    <para>整个的Ethernet/IP协议栈，都可以通过微处理器之上的软件来实现，而不再需要特定的硬件（比如ASIC，FPGA等）。</para>
+    <para>Ethernet/IP，是基于TCP/IP协议栈之上，用到了全部的OSI的7层模型。</para>
+    
+    <sect2 xml:id="ethernet_ip_arch"><title>Ethernet/IP的架构</title>
+        <para>Ethernet/IP的架构，可以用下图很清晰的表示出来：</para>
+        <figure id="fg.ethernet_ip_arch"><title>Ethernet/IP的架构</title>
+            <mediaobject>
+                <imageobject role="html"><imagedata fileref="images/ethernet_ip_arch.gif" align="left"   scalefit="0" width="100%" /></imageobject>
+                <imageobject role="fo">  <imagedata fileref="images/ethernet_ip_arch.gif" align="center" scalefit="1" width="100%" /></imageobject>
+            </mediaobject>
+        </figure>
+    </sect2>
+</sect1>
+
+<sect1 xml:id="fieldbus_hart"><title>HART</title>
+    <para>HART，Highway Addressable Remote Transducer Protocol，可寻址远程传感器高速通道协议，HART是作为数字化工业自动化协议的现场总线的最早期的实现。</para>
+    <para>其最引人注目的特点是，HART可以在旧的4-20mA的模拟仪表配线上，共享使用双绞线，进行通讯。由于过去的大量的系统是基于4-20mA的方案，也使得HART协议成为现在最流行的工业协议之一。</para>
+    <para>对于习惯使用旧的4-20mA的信号系统的人来说，想要去实现更加智能化的协议。HART算是提供了一个很好的协议转换。目前工业界中，使用Profibus DP/PA和FF的，越来越多了，因为对于用户来说，越来越熟悉这些技术了，也愿意使用性能更好的调试功能。</para>
+    <para>HART有两种操作模式，对等模式（模拟/数字模式）和多支路（Multidrop）模式。</para>
+    <orderedlist>
+        <listitem>对等（peer-to-peer = analog/digital）模式
+            <para>数字信号重叠与4-20mA的环路电流之上。</para>
+            <para>对于设备来说，数字信号和4-20mA的电流，都是有效的输出。轮训的设备地址设置为0.对于每一个仪器的电缆的信号对来说，只能放置一个设备。单个用户指定的信号，作为4-20mA的信号，另外的信号，在4-20mA信号之上，作为数字信号发送。例如，压力参数可以通过4-20mA信号，表示压力的范围，而温度可以通过同一信号线，作为数字信号传送</para>
+        </listitem>
+        <listitem>多分支（multidrop）模式
+            <para>只用数字信号。</para>
+            <para>模拟的环路电流是固定的4mA。在multidrop模式中，单个信号线缆，可能会接多个仪器。HART的3到5版本中，允许轮训仪器地址的范围是1-15.第6版即之后的HART，最大寻址达63.每个仪表都有个独一无二的地址。</para>
+        </listitem>
+    </orderedlist>
+    <para>HART的数据包的结构为：</para>
+    <table id="tbl.hart_data_package"><title>HART数据包的结构</title>
+        <tgroup cols="3">
+            <colspec colnum="1" colname="col1" colwidth="1*" />
+            <colspec colnum="2" colname="col2" colwidth="1*" />
+            <colspec colnum="3" colname="col3" colwidth="3*" />
+
+            <thead>
+                <row><entry>域名</entry><entry>长度（字节）</entry><entry>用途</entry></row>
+            </thead>
+            
+            <tbody>
+                <row><entry>Preamble</entry><entry>5-20</entry><entry>同步和载波检测</entry></row>
+                <row><entry>Start Byte</entry><entry>1</entry><entry>指定主设备号</entry></row>
+                <row><entry>Address</entry><entry>1-5</entry><entry>指定注从设备，指定突发模式</entry></row>
+                <row><entry>Command</entry><entry>1</entry><entry>数字值，用于要执行的命令</entry></row>
+                <row><entry>Number of Data Bytes</entry><entry>1</entry><entry>指定数据域的大小</entry></row>
+                <row><entry>Status</entry><entry><literallayout>Master (0)
+Slave (2)</literallayout></entry><entry>执行和健康状况回应</entry></row>
+                <row><entry>Data</entry><entry>0-253</entry><entry>和命令相关的数据</entry></row>
+                <row><entry>Checksum</entry><entry>1</entry><entry>异或所有的字节，从起始字节到倒数第二个字节，而得到的校验值</entry></row>
+            </tbody>
+        </tgroup>
+    </table>
+</sect1>
+
+<sect1 xml:id="fieldbus_ff"><title>Foundation Fieldbus</title>
+    <para>Foundation Fieldbus，一般简称为FF，是一个全数字化的，串行的，双向的通讯系统。</para>
+    <para>其在工厂或生产自动化环境中，起到一个基础的网络功能。</para>
+    <para>FF主要用于过程工业领域。</para>
+    <para>FF主要分两类：</para>
+    <orderedlist>
+        <listitem>H1
+            <para>工作在31.25kbit/s，常连接到现场设备上。通过标准的双绞线供电和实现数据通信。HI是目前用的最多的</para>
+        </listitem>
+        <listitem>HSE
+            <para>High Speed Ethernet，高速以太网，工作在100Mbit/s，常通过标准的以太网电缆，连接到IO子系统，主机系统，连接服务，网关，和现场设备。目前来说，不支持通过电缆供电。与FF HSE对应的规范是IEC 61804</para>
+        </listitem>
+    </orderedlist>
+    <para>下图是一个基于FF HSE的控制系统的框架图：</para>
+    <figure id="fg.ctrl_sys_base_on_ff"><title>基于FF的控制系统的框架图</title>
+        <mediaobject>
+            <imageobject role="html">
+                <imagedata fileref="images/ctrl_sys_base_on_ff.png" align="left" scalefit="0" width="100%" />
+            </imageobject>
+            <imageobject role="fo">
+                <imagedata fileref="images/ctrl_sys_base_on_ff.png" align="center" scalefit="1" width="100%"/>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</sect1>
+
+</chapter>
